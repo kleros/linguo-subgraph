@@ -2,7 +2,7 @@
 This repo defines a subgraph which is used by [Linguo](https://linguo.kleros.io/) - The First Decentralized Translation Platform.
 
 #### TL;DR
-Kleros Linguo allows users to request translations of documents or other text, and translators can then bid on these requests to provide the translation services. The platform uses smart contracts to manage the bidding process and ensure that translators are fairly compensated for the conducted work. 
+Kleros Linguo allows users to request translations of documents or other text, and translators can then get assigned fr these requests to provide the translation services. The platform uses smart contracts to manage the bidding process and ensure that translators are fairly compensated for the conducted work. 
 
 In the event of a dispute, Kleros Linguo uses the Kleros arbitration to resolve any disagreements. This allows for fair and impartial resolution of disputes, ensuring that both requesters and translators are treated fairly.
 
