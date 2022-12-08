@@ -103,7 +103,7 @@ The subgraph codebase consists of
   }
   ```
 
-  This mapping and such will handle events related to the creation, assignment, challenge, and resolution of tasks. When these events fire, the mapping will save the relevant data into the subgraph. This will ensure that the subgraph is always up-to-date and reflects the latest state of the tasks.
+  This mapping and such will handle events related to the _creation_, _assignment_, _challenge_, and _resolution_ of translation tasks. When these events fire, the mapping will save the relevant data into the subgraph. This will ensure that the subgraph is always up-to-date and reflects the latest state of the tasks.
 
 ## Build
 
