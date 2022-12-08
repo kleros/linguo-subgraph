@@ -17,13 +17,13 @@
     "postinstall": "husky install"
   },
   "dependencies": {
-    "@graphprotocol/graph-cli": "0.36.1",
+    "@graphprotocol/graph-cli": "^0.37.1",
     "@graphprotocol/graph-ts": "0.28.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
-    "@types/node": "^18.11.12",
+    "@types/node": "^16.0.0",
     "@typescript-eslint/eslint-plugin": "^5.46.0",
     "@typescript-eslint/parser": "^5.46.0",
     "eslint": "^8.29.0",
@@ -39,5 +39,9 @@
     "matchstick-as": "0.5.0",
     "prettier": "^2.8.1",
     "typescript": "^4.9.4"
+  },
+  "packageManager": "yarn@1.22.19",
+  "volta": {
+    "node": "16.18.1"
   }
 }
