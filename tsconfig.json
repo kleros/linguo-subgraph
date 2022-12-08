@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es2021",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "dist",
+    "noImplicitAny": false,
+    "declaration": true,
+    "resolveJsonModule": true
+  },
+  "extends": "@graphprotocol/graph-ts/types/tsconfig.base.json",
+  "include": [
+    "src",
+    "tests",
+    "commitlint.config.ts"
+  ],
+  "exclude": [
+    "build",
+    "generated"
+  ]
+}
