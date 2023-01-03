@@ -1,31 +1,86 @@
 {
   "gnosis": {
     "Linguo_de_en": {
-      "address": "0xc3162705Af0e10108FF837E450A14669b2711129"
+      "address": "0xc3162705Af0e10108FF837E450A14669b2711129",
+      "startBlock": 25237532
     },
     "Linguo_en_es": {
-      "address": "0xA2BfFF0553DE7405781FE0C39C04A383F04b9C80"
+      "address": "0xA2BfFF0553DE7405781FE0C39C04A383F04b9C80",
+      "startBlock": 19216099
     },
-    "Linfuo_en_fr": {
-      "address": "0x464c84c41f3C25Ba5a75B006D8B20600A8777306"
+    "Linguo_en_fr": {
+      "address": "0x464c84c41f3C25Ba5a75B006D8B20600A8777306",
+      "startBlock": 20170391
     },
     "Linguo_en_ja": {
-      "address": "0x852550982e0984F9CCeF18a7276D35AFDc30242c"
+      "address": "0x852550982e0984F9CCeF18a7276D35AFDc30242c",
+      "startBlock": 25237532
     },
     "Linguo_en_ko": {
-      "address": "0xD67C12734dC12240a6324Db63ccd426964B71Fe7"
+      "address": "0xD67C12734dC12240a6324Db63ccd426964B71Fe7",
+      "startBlock": 25237532
     },
     "Linguo_en_pt": {
-      "address": "0xFE721DD8Ac8e47A4228A6147A25C65136f213EaA"
+      "address": "0xFE721DD8Ac8e47A4228A6147A25C65136f213EaA",
+      "startBlock": 25237532
     },
     "Linguo_en_ru": {
-      "address": "0x44863f5b7AAb7ceE181C0d84E244540125eF7AF7"
+      "address": "0x44863f5b7AAb7ceE181C0d84E244540125eF7AF7",
+      "startBlock": 25237532
     },
     "Linguo_en_tr": {
-      "address": "0x1D48a279966f37385b4AB963530C6dC813b3A8Df"
+      "address": "0x1D48a279966f37385b4AB963530C6dC813b3A8Df",
+      "startBlock": 18683059
     },
     "Linguo_en_zh": {
-      "address": "0x0B928165A67df8254412483ae8C3b8cc7F2b4D36"
+      "address": "0x0B928165A67df8254412483ae8C3b8cc7F2b4D36",
+      "startBlock": 19369820
+    },
+    "IArbitrator": {
+      "address": "0x9C1dA9A04925bDfDedf0f6421bC7EEa8305F9002",
+      "startBlock": 18683059
+    }
+  },
+  "poa-sokol": {
+    "Linguo_de_en": {
+      "address": "0x8539cb2fB9186f3DcF8F9A0AeD3De395Fd6d9870",
+      "startBlock": 23235850
+    },
+    "Linguo_en_es": {
+      "address": "0x5a9F70ED50e16010f0B9d5bb5a3EFdb42fEcaD23",
+      "startBlock": 23235845
+    },
+    "Linguo_en_fr": {
+      "address": "0x9CA979a165EF741BF120A3FEbb4F5C083De40708",
+      "startBlock": 23235847
+    },
+    "Linguo_en_ja": {
+      "address": "0x753d611eAdF324B1f23A3A417BceB08eeda80ec6",
+      "startBlock": 23235854
+    },
+    "Linguo_en_ko": {
+      "address": "0xC578de969Dd2A2a08d6Bd5A4F7AaA9b1a2e6A395",
+      "startBlock": 23235852
+    },
+    "Linguo_en_pt": {
+      "address": "0x457b2BAb823c772fA4457517C97E6BF13065c21D",
+      "startBlock": 23235849
+    },
+    "Linguo_en_ru": {
+      "address": "0x6cD5BAb73135966008d969bE23Ff940e6fa3Bb87",
+      "startBlock": 23235851
+    },
+    "Linguo_en_tr": {
+      "address": "0xa9426b235E12897A99B015CbcF4D064e86fde418",
+      "startBlock": 23235855
+    },
+    "Linguo_en_zh": {
+      "address": "0x09CE835FaB6051a18b2FC11743c01DAAD3122f1F",
+      "startBlock": 23235856
+    },
+    "IArbitrator": {
+      "address": "0xb701ff19fBD9702DD7Ca099Ee7D0D42a2612baB5",
+      "startBlock": 23235845
     }
   }
 }
