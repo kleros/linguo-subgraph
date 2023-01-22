@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source .env
-
 NETWORK_NAME=
 SUBGRAPH_NAME=
 TEMP=`getopt -o n:s: --long network:,subgraph-name: -n 'deploy.sh' -- "$@"`
