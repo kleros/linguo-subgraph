@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: Linguo_en_es
-    network: gnosis
+    network: goerli
     source:
-      address: '0xA2BfFF0553DE7405781FE0C39C04A383F04b9C80'
       abi: Linguo
-      startBlock: 19216099 # created at 18668091
+      address: "0x5fB4B92c48dB367Dee88e34cA977Af0581D1a855"
+      startBlock: 8276521
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -50,11 +50,11 @@ dataSources:
       file: ./src/linguo.ts
   - kind: ethereum
     name: Linguo_de_en
-    network: gnosis
+    network: goerli
     source:
-      address: '0xc3162705Af0e10108FF837E450A14669b2711129'
       abi: Linguo
-      startBlock: 25237532 # created at 18668111
+      address: "0xDDFac50f2f9C60AD1b263C37253E7f157231dfF3"
+      startBlock: 8276525
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -96,11 +96,11 @@ dataSources:
       file: ./src/linguo.ts
   - kind: ethereum
     name: Linguo_en_fr
-    network: gnosis
+    network: goerli
     source:
-      address: '0x464c84c41f3C25Ba5a75B006D8B20600A8777306'
       abi: Linguo
-      startBlock: 20170391 # created at 18668092
+      address: "0x81F78a49E472B507B49ea7a01dF2760E1922dce4"
+      startBlock: 8276523
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -142,11 +142,11 @@ dataSources:
       file: ./src/linguo.ts
   - kind: ethereum
     name: Linguo_en_ja
-    network: gnosis
+    network: goerli
     source:
-      address: '0x852550982e0984F9CCeF18a7276D35AFDc30242c'
       abi: Linguo
-      startBlock: 25237532 # created at 18668128
+      address: "0x9B926259A16F975f931E5587b5756EFAAC305B5f"
+      startBlock: 8276528
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -188,11 +188,11 @@ dataSources:
       file: ./src/linguo.ts
   - kind: ethereum
     name: Linguo_en_ko
-    network: gnosis
+    network: goerli
     source:
-      address: '0xD67C12734dC12240a6324Db63ccd426964B71Fe7'
       abi: Linguo
-      startBlock: 25237532 # created at 18668126
+      address: "0x558457cA2a4c22b9A50E8822FDf7927887D90D6c"
+      startBlock: 8276527
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -234,11 +234,11 @@ dataSources:
       file: ./src/linguo.ts
   - kind: ethereum
     name: Linguo_en_pt
-    network: gnosis
+    network: goerli
     source:
-      address: '0xFE721DD8Ac8e47A4228A6147A25C65136f213EaA'
       abi: Linguo
-      startBlock: 25237532 # created at 18668099
+      address: "0x3e05C4dEc668bd0A93668437577fea36Db77AB65"
+      startBlock: 8276524
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -280,11 +280,11 @@ dataSources:
       file: ./src/linguo.ts
   - kind: ethereum
     name: Linguo_en_ru
-    network: gnosis
+    network: goerli
     source:
-      address: '0x44863f5b7AAb7ceE181C0d84E244540125eF7AF7'
       abi: Linguo
-      startBlock: 25237532 # created at 18668123
+      address: "0xa0D5931DecB5Fb7265ac0417fDB6D2C39500F824"
+      startBlock: 8276526
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -326,11 +326,11 @@ dataSources:
       file: ./src/linguo.ts
   - kind: ethereum
     name: Linguo_en_tr
-    network: gnosis
+    network: goerli
     source:
-      address: '0x1D48a279966f37385b4AB963530C6dC813b3A8Df'
       abi: Linguo
-      startBlock: 18683059 # created at 18668130
+      address: "0x1bfEbB574A263D4d627ceF63d9fA23CD624E0e5c"
+      startBlock: 8276529
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -372,11 +372,11 @@ dataSources:
       file: ./src/linguo.ts
   - kind: ethereum
     name: Linguo_en_zh
-    network: gnosis
+    network: goerli
     source:
-      address: '0x0B928165A67df8254412483ae8C3b8cc7F2b4D36'
       abi: Linguo
-      startBlock: 19369820 # created at 18668136
+      address: "0x5bd640A53E2E29984D405FCc0b1526c252A325D7"
+      startBlock: 8276530
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -418,11 +418,11 @@ dataSources:
       file: ./src/linguo.ts
   - kind: ethereum/contract
     name: IArbitrator
-    network: gnosis
+    network: goerli
     source:
-      address: '0x9C1dA9A04925bDfDedf0f6421bC7EEa8305F9002'
       abi: IArbitrator
-      startBlock: 18683059
+      address: "0x1128eD55ab2d796fa92D2F8E1f336d745354a77A"
+      startBlock: 8276530
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
