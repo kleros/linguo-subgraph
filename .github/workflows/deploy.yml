@@ -13,13 +13,11 @@ on:
         description: The subgrap project name including account name and project id
         required: true
 
-  env:
-    SUBGRAPH_AUTH_TOKEN: ${{ secrets.SUBGRAPH_AUTH_TOKEN }}
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    env:
+      SUBGRAPH_AUTH_TOKEN: ${{ secrets.SUBGRAPH_AUTH_TOKEN }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
