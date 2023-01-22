@@ -10,9 +10,11 @@ on:
       network:
         description: The network to deploy the subgraph to
         required: true
+        default: "goerli"
       subgraph_name:
         description: The subgrap project name including account name and project id
         required: true
+        default: "gratestas/linguo-goerli-test"
 
 jobs:
   deploy:
