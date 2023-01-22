@@ -41,46 +41,46 @@
       "startBlock": 18683059
     }
   },
-  "poa-sokol": {
+  "goerli": {
     "Linguo_de_en": {
-      "address": "0x8539cb2fB9186f3DcF8F9A0AeD3De395Fd6d9870",
-      "startBlock": 23235850
+      "address": "0xDDFac50f2f9C60AD1b263C37253E7f157231dfF3",
+      "startBlock": 8276525
     },
     "Linguo_en_es": {
-      "address": "0x5a9F70ED50e16010f0B9d5bb5a3EFdb42fEcaD23",
-      "startBlock": 23235845
+      "address": "0x5fB4B92c48dB367Dee88e34cA977Af0581D1a855",
+      "startBlock": 8276521
     },
     "Linguo_en_fr": {
-      "address": "0x9CA979a165EF741BF120A3FEbb4F5C083De40708",
-      "startBlock": 23235847
+      "address": "0x81F78a49E472B507B49ea7a01dF2760E1922dce4",
+      "startBlock": 8276523
     },
     "Linguo_en_ja": {
-      "address": "0x753d611eAdF324B1f23A3A417BceB08eeda80ec6",
-      "startBlock": 23235854
+      "address": "0x9B926259A16F975f931E5587b5756EFAAC305B5f",
+      "startBlock": 8276528
     },
     "Linguo_en_ko": {
-      "address": "0xC578de969Dd2A2a08d6Bd5A4F7AaA9b1a2e6A395",
-      "startBlock": 23235852
+      "address": "0x558457cA2a4c22b9A50E8822FDf7927887D90D6c",
+      "startBlock": 8276527
     },
     "Linguo_en_pt": {
-      "address": "0x457b2BAb823c772fA4457517C97E6BF13065c21D",
-      "startBlock": 23235849
+      "address": "0x3e05C4dEc668bd0A93668437577fea36Db77AB65",
+      "startBlock": 8276524
     },
     "Linguo_en_ru": {
-      "address": "0x6cD5BAb73135966008d969bE23Ff940e6fa3Bb87",
-      "startBlock": 23235851
+      "address": "0xa0D5931DecB5Fb7265ac0417fDB6D2C39500F824",
+      "startBlock": 8276526
     },
     "Linguo_en_tr": {
-      "address": "0xa9426b235E12897A99B015CbcF4D064e86fde418",
-      "startBlock": 23235855
+      "address": "0x1bfEbB574A263D4d627ceF63d9fA23CD624E0e5c",
+      "startBlock": 8276529
     },
     "Linguo_en_zh": {
-      "address": "0x09CE835FaB6051a18b2FC11743c01DAAD3122f1F",
-      "startBlock": 23235856
+      "address": "0x5bd640A53E2E29984D405FCc0b1526c252A325D7",
+      "startBlock": 8276530
     },
     "IArbitrator": {
-      "address": "0xb701ff19fBD9702DD7Ca099Ee7D0D42a2612baB5",
-      "startBlock": 23235845
+      "address": "0x1128eD55ab2d796fa92D2F8E1f336d745354a77A",
+      "startBlock": 8276530
     }
   }
 }
