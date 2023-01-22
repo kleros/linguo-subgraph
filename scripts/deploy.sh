@@ -50,7 +50,7 @@ if echo "$TESTNET_NETWORKS" | grep -qw "$NETWORK_NAME" ; then
     # authorize with the graph cli
     graph auth --product hosted-service "$SUBGRAPH_AUTH_TOKEN"
     # deploy subgraph
-    #yarn deploy:testnet "$SUBGRAPH_NAME"
+    yarn deploy:testnet "$SUBGRAPH_NAME"
 elif echo "$PRODUCTION_NETWORKS" | grep -qw "$NETWORK_NAME" ; then
     echo "Deploying to production network: $NETWORK_NAME"
     # run deploy-mainnet script
