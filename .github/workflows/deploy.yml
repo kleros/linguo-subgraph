@@ -1,0 +1,36 @@
+name: Deploy Subgraph
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      network:
+        description: The network to deploy the subgraph to
+        required: true
+      subgraph_name:
+        description: The subgrap project name including account name and project id
+        required: true
+
+  env:
+    SUBGRAPH_AUTH_TOKEN: ${{ secrets.SUBGRAPH_AUTH_TOKEN }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build and deploy subgraph
+        run: ./scripts/deploy.sh --n ${{ inputs.network }} --s ${{inputs.subgraph_name}}
