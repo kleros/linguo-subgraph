@@ -19,8 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SUBGRAPH_AUTH_TOKEN: ${{ secrets.SUBGRAPH_AUTH_TOKEN }}
-      PRODUCTION_NETWORKS: ${{ env.PRODUCTION_NETWORKS }}
-      TESTNET_NETWORKS: ${{ env.TESTNET_NETWORKS }}
+      PRODUCTION_NETWORKS: "gnosis"
+      TESTNET_NETWORKS: "goerli, chiado"
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
