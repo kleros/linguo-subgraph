@@ -11,6 +11,7 @@ import {
   TaskResolved as TaskResolvedEvent,
   TranslationChallenged as TranslationChallengedEvent,
   TranslationSubmitted as TranslationSubmittedEvent,
+  HasPaidAppealFee as HasPaidAppealFeeEvent,
 } from "../generated/Linguo_en_es/Linguo";
 
 import {
@@ -45,8 +46,9 @@ export function handleMetaEvidence(event: MetaEvidenceEvent): void {
   newTask.maxPrice = _task.getMaxPrice();
   newTask.minPrice = _task.getMinPrice();
   newTask.requesterDeposit = _task.getRequesterDeposit();
+  newTask.assignedPrice = ZERO;
   newTask.sumDeposit = _task.getSumDeposit();
-  newTask.status = statusMap.get(_task.getStatus());
+  newTask.status = statusMap.get(_task.getStatus()) || "";
   newTask.numberOfRounds = ZERO;
   newTask.numberOfEvidences = ZERO;
   newTask.disputed = false;
@@ -112,12 +114,13 @@ export function handleTaskAssigned(event: TaskAssignedEvent): void {
 
   task.translator = event.params._translator;
   task.requesterDeposit = event.params._price;
+  task.assignedPrice = event.params._price;
   task.assignmentTime = event.params._timestamp;
 
   const linguo = Linguo.bind(event.address);
   const _task = linguo.tasks(task.taskID);
   task.sumDeposit = _task.getSumDeposit();
-  task.status = statusMap.get(_task.getStatus());
+  task.status = statusMap.get(_task.getStatus()) || "";
 
   task.save();
 }
@@ -191,7 +194,7 @@ export function handleTranslationChallenged(event: TranslationChallengedEvent): 
 
   const linguo = Linguo.bind(event.address);
   const _task = linguo.tasks(task.taskID);
-  task.status = statusMap.get(_task.getStatus());
+  task.status = statusMap.get(_task.getStatus()) || "";
   task.sumDeposit = _task.getSumDeposit();
 
   const roundId = task.id + "-0";
@@ -225,14 +228,16 @@ export function handleDispute(event: DisputeEvent): void {
   task.save();
 }
 
-export function handleAppealContribution(event: AppealContributionEvent): void {
+export function handleHasPaidAppealFee(event: HasPaidAppealFeeEvent): void {
   const lang = getLangFromAddress(event.address);
   if (lang === null) {
     log.error("Language for Linguo deployment is not found. lang {}; contract {}", [lang, event.address.toHexString()]);
     return;
   }
+
   const taskId = `${lang}-${event.params._taskID}`;
   const task = Task.load(taskId);
+
   if (!task) {
     log.error("HandleAppealContribution: Task not found. taskID {}; contract {}", [
       taskId,
@@ -243,6 +248,57 @@ export function handleAppealContribution(event: AppealContributionEvent): void {
 
   const roundId = `${task.id}-${task.numberOfRounds.minus(ONE)}`;
   const round = Round.load(roundId);
+
+  if (!round) {
+    log.error("HandleAppealContribution: Round not found. roundID {}; taskID {}; contract{}", [
+      roundId,
+      taskId,
+      event.address.toHexString(),
+    ]);
+    return;
+  }
+
+  /*  if (event.params._party === Party.Challenger) round.hasPaidChallenger = true;
+  if (event.params._party === Party.Translator) round.hasPaidTranslator = true; */
+
+  const linguo = Linguo.bind(event.address);
+  const roundInfo = linguo.getRoundInfo(task.taskID, task.numberOfRounds.minus(ONE));
+
+  round.hasPaidChallenger = roundInfo.getHasPaid()[Party.Challenger];
+  round.hasPaidTranslator = roundInfo.getHasPaid()[Party.Translator];
+  round.feeRewards = roundInfo.getFeeRewards();
+
+  if (round.hasPaidChallenger && round.hasPaidTranslator) {
+    const newRroundId = `${task.id}-${task.numberOfRounds}`;
+    const newRound = createNewRound(newRroundId, task.id, event.block.timestamp);
+    newRound.save();
+    task.numberOfRounds = task.numberOfRounds.plus(ONE);
+  }
+
+  round.save();
+}
+
+export function handleAppealContribution(event: AppealContributionEvent): void {
+  const lang = getLangFromAddress(event.address);
+  if (lang === null) {
+    log.error("Language for Linguo deployment is not found. lang {}; contract {}", [lang, event.address.toHexString()]);
+    return;
+  }
+
+  const taskId = `${lang}-${event.params._taskID}`;
+  const task = Task.load(taskId);
+
+  if (!task) {
+    log.error("HandleAppealContribution: Task not found. taskID {}; contract {}", [
+      taskId,
+      event.address.toHexString(),
+    ]);
+    return;
+  }
+
+  const roundId = `${task.id}-${task.numberOfRounds.minus(ONE)}`;
+  const round = Round.load(roundId);
+
   if (!round) {
     log.error("HandleAppealContribution: Round not found. roundID {}; taskID {}; contract{}", [
       roundId,
@@ -257,16 +313,6 @@ export function handleAppealContribution(event: AppealContributionEvent): void {
 
   round.amountPaidTranslator = roundInfo.getPaidFees()[Party.Translator];
   round.amountPaidChallenger = roundInfo.getPaidFees()[Party.Challenger];
-  round.hasPaidTranslator = roundInfo.getHasPaid()[Party.Translator];
-  round.hasPaidChallenger = roundInfo.getHasPaid()[Party.Challenger];
-  round.feeRewards = roundInfo.getFeeRewards();
-
-  if (round.appealed) {
-    const newRroundId = `${task.id}-${task.numberOfRounds}`;
-    const newRound = createNewRound(newRroundId, task.id, event.block.timestamp);
-    newRound.save();
-    task.numberOfRounds = task.numberOfRounds.plus(ONE);
-  }
 
   const contributionId = `${roundId}-${round.numberOfContributions}`;
   const contribution = new Contribution(contributionId);
@@ -303,7 +349,7 @@ export function handleEvidence(event: EvidenceEvent): void {
   }
 
   const evidenceId = `${task.id}-${task.numberOfEvidences}`;
-  let evidence = new Evidence(evidenceId);
+  const evidence = new Evidence(evidenceId);
 
   evidence.arbitrator = event.params._arbitrator;
   evidence.evidenceGroupID = event.params._evidenceGroupID;
@@ -369,6 +415,7 @@ export function handleAppealPossible(event: AppealPossibleEvent): void {
   }
   const taskId = `${lang}-${linguo.disputeIDtoTaskID(event.params._disputeID)}`;
   const task = Task.load(taskId);
+
   if (!task) {
     log.error("HandleAppealPossible: Task not found. taksID {}; disputeID {}; contract{}", [
       taskId.toString(),
@@ -380,6 +427,7 @@ export function handleAppealPossible(event: AppealPossibleEvent): void {
 
   const roundId = `${task.id}-${task.numberOfRounds.minus(ONE)}`;
   const round = Round.load(roundId);
+
   if (!round) {
     log.error(`HandleAppealPossible: Round not found. roundID {}; taskID {}; contract {}`, [
       roundId,
@@ -389,8 +437,8 @@ export function handleAppealPossible(event: AppealPossibleEvent): void {
     return;
   }
 
-  let arbitrator = IArbitrator.bind(event.address);
-  let appealPeriod = arbitrator.appealPeriod(event.params._disputeID);
+  const arbitrator = IArbitrator.bind(event.address);
+  const appealPeriod = arbitrator.appealPeriod(event.params._disputeID);
   const currentRuling = arbitrator.currentRuling(event.params._disputeID);
 
   round.appealPeriodStart = appealPeriod.getStart();
@@ -425,6 +473,7 @@ export function handleAppealDecision(event: AppealDecisionEvent): void {
 
   const taskId = `${lang}-${linguo.disputeIDtoTaskID(event.params._disputeID)}`;
   const task = Task.load(taskId);
+
   if (!task) {
     log.error("HandleAppealDecision: Task not found. taskID {}; disputeID {}; contract {}", [
       lang.concat(taskId.toString()),
@@ -436,6 +485,7 @@ export function handleAppealDecision(event: AppealDecisionEvent): void {
 
   const roundId = `${task.id}-${task.numberOfRounds.minus(ONE)}`;
   const round = Round.load(roundId);
+
   if (!round) {
     log.error("HandleAppealDecision: Round not found. roundID {}; taskID {} contract {}", [
       roundId,

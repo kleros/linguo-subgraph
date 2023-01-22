@@ -45,6 +45,8 @@ type Task @entity {
   submissionTimeout: BigInt!
   "The deposit requester made when creating the task"
   requesterDeposit: BigInt!
+  "The price of the task at the time of assignment"
+  assignedPrice: BigInt!
   "The sum of the deposits of the translator and the challenger, if any."
   sumDeposit: BigInt!
   "Status of the task."
