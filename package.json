@@ -10,7 +10,7 @@
     "codegen": "graph codegen",
     "build:prepare": "graph codegen && sh scripts/update-addresses.sh $NETWORK_NAME",
     "build": "graph build --network $NETWORK_NAME",
-    "deploy:testnet": "graph deploy $SUBGRAPH_NAME --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "deploy:testnet": "func() { graph auth https://api.thegraph.com/deploy/ $1 && graph deploy --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ gratestas/$2; }; func $SUBGRAPH_AUTH_TOKEN $SUBGRAPH_NAME",
     "create-local": "graph create --node http://localhost:8020/ kleros/linguo-gnosis",
     "remove-local": "graph remove --node http://localhost:8020/ kleros/linguo-gnosis",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 kleros/linguo-gnosis",

@@ -1,20 +1,14 @@
 name: Deploy Subgraph
 
 on:
-  push:
-    branches:
-      - master
-      - feat/deploy-automation
   workflow_dispatch:
     inputs:
       network:
         description: The network to deploy the subgraph to
         required: true
-        default: "goerli"
       subgraph_name:
         description: The subgrap project name including account name and project id
         required: true
-        default: "gratestas/linguo-goerli-test"
 
 jobs:
   deploy:
@@ -36,4 +30,4 @@ jobs:
         run: yarn install
 
       - name: Build and deploy subgraph
-        run: ./scripts/deploy.sh --n ${{ inputs.network }} --s ${{inputs.subgraph_name}}
+        run: ./scripts/deploy.sh --n ${{ github.event.inputs.network }} --s ${{github.event.inputs.subgraph_name}}
