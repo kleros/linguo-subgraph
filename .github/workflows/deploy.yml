@@ -47,7 +47,8 @@ jobs:
 
       - name: Build and deploy subgraph
         run: |
-          yarn graph deploy --product hosted-service \
+          yarn graph deploy \
+            --product hosted-service \
             --network "${{ inputs.network }}" \
             ${{ inputs.subgraph_name }}
         
