@@ -6,17 +6,24 @@ on:
       network:
         description: The network to deploy the subgraph to
         required: true
+        default: 'goerli'
+        type: choice
+        options:
+          - goerli
+          - gnosis
       subgraph_name:
-        description: The subgrap project name including account name and project id
+        description: The subgraph project name including account name and project id
+        default: account/linguo-goerli
+        required: true
+      environment:
+        description: 'The environment to run tests against'
+        type: environment
         required: true
 
 jobs:
-  deploy:
+  buildAndDeploy:
     runs-on: ubuntu-latest
-    env:
-      SUBGRAPH_AUTH_TOKEN: ${{ secrets.SUBGRAPH_AUTH_TOKEN }}
-      PRODUCTION_NETWORKS: "gnosis"
-      TESTNET_NETWORKS: "goerli, chiado"
+    environment: ${{ inputs.environment }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -30,4 +37,17 @@ jobs:
         run: yarn install
 
       - name: Build and deploy subgraph
-        run: ./scripts/deploy.sh --n ${{ github.event.inputs.network }} --s ${{github.event.inputs.subgraph_name}}
+        run: |
+          export NETWORK_NAME=${{ inputs.network }}
+          yarn build:prepare
+          yarn build
+
+      - name: Authenticate with TheGraph
+        run: yarn auth "${{ secrets.SUBGRAPH_AUTH_TOKEN }}"
+
+      - name: Build and deploy subgraph
+        run: |
+          yarn graph deploy --product hosted-service \
+            --network "${{ inputs.network }}" \
+            ${{ inputs.subgraph_name }}
+        
