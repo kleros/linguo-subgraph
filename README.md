@@ -24,12 +24,17 @@ Currently Linguo provides service for 9 language pairs:
 
 ## Deployments
 
-Currently the subgraph is deployed only on Gnosis chain
+Currently the subgraph is deployed on:
 
 ### Gnosis (Hosted Service)
 
 - [Subgraph explorer](https://thegraph.com/explorer/subgraph/kleros/linguo-gnosis)
-- [Subgraph endpoints](https://api.thegraph.com/subgraphs/name/kleros/linguo-gnosis)
+- [Subgraph endpoint](https://api.thegraph.com/subgraphs/name/kleros/linguo-gnosis)
+
+### Goerli (Hosted Service)
+
+- [Subgraph explorer](https://thegraph.com/explorer/subgraph/kleros/linguo-goerli)
+- [Subgraph endpoint](https://api.thegraph.com/subgraphs/name/kleros/linguo-goerli)
 
 ## The subgraph defintion
 
