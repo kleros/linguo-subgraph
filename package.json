@@ -19,8 +19,8 @@
     "postinstall": "husky install"
   },
   "dependencies": {
-    "@graphprotocol/graph-cli": "0.37.6",
-    "@graphprotocol/graph-ts": "0.29.1"
+    "@graphprotocol/graph-cli": "^0.69.2",
+    "@graphprotocol/graph-ts": "^0.34.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.3.0",
@@ -43,8 +43,5 @@
     "prettier": "^2.8.1",
     "typescript": "^4.9.4"
   },
-  "volta": {
-    "node": "16.18.1",
-    "yarn": "1.22.18"
-  }
+  "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
 }
